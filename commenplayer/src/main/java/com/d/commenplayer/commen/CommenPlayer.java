@@ -99,7 +99,7 @@ public class CommenPlayer extends RelativeLayout implements IPlayer, View.OnClic
                 } else {
                     player.pause();
                     depositer.setPlayerVisibility(GONE, VISIBLE, GONE);
-                    depositer.setControl("已加载视频，是否开始播放？", "开始播放", new OnClickListener() {
+                    depositer.setControl("视频已加载，是否开始播放？", "开始播放", new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             depositer.setPlayerVisibility(GONE, GONE, VISIBLE);
@@ -114,7 +114,6 @@ public class CommenPlayer extends RelativeLayout implements IPlayer, View.OnClic
 
             @Override
             public boolean onError(IMediaPlayer mp, int what, int extra) {
-                depositer.setPlayerVisibility(GONE, VISIBLE, GONE);
                 depositer.setPlayerVisibility(GONE, VISIBLE, GONE);
                 depositer.setControl("播放失败，是否重试？", "重试", new OnClickListener() {
                     @Override
@@ -268,10 +267,9 @@ public class CommenPlayer extends RelativeLayout implements IPlayer, View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fullscreen:
-                toggleOrientation();
-                break;
+        int id = v.getId();
+        if (id == R.id.fullscreen) {
+            toggleOrientation();
         }
     }
 }

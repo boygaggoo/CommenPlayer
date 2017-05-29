@@ -12,9 +12,9 @@ import android.widget.TextView;
 import com.d.commenplayer.R;
 
 /**
+ * Depositer
  * Created by D on 2017/5/28.
  */
-
 public class Depositer {
     private View vLoading;//loading态
     private View vControl;//播放控制态
@@ -28,7 +28,7 @@ public class Depositer {
         this.vControl = vControl;
         this.vVideo = vVideo;
         ivControl = (ImageView) vControl.findViewById(R.id.start);
-        tvControl = (TextView) vControl.findViewById(R.id.tv_desc);
+        tvControl = (TextView) vControl.findViewById(R.id.tv_des);
         btnControl = (Button) vControl.findViewById(R.id.btn_button);
     }
 

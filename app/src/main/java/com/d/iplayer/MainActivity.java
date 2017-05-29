@@ -1,4 +1,4 @@
-package com.d.commenplayer;
+package com.d.iplayer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,8 @@ import com.d.commenplayer.listener.OnNetChangeListener;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 public class MainActivity extends Activity {
+    private String url1 = "http://vpls.cdn.videojj.com/scene/video02_720p.mp4";
+    private String url2 = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     private CommenPlayer player;
 
     @Override
@@ -77,7 +79,7 @@ public class MainActivity extends Activity {
 
             }
         });
-        player.play("http://vpls.cdn.videojj.com/scene/video02_720p.mp4");
+        player.play(url1);
     }
 
     @Override

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="#ff000000">
 
     <com.d.commenplayer.media.IjkVideoView
         android:id="@+id/ijkplayer"
@@ -73,7 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:indeterminateDrawable="@drawable/loading"
-        android:visibility="invisible" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/control"
@@ -92,7 +92,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/tv_desc"
+            android:id="@+id/tv_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当前为移动网络，是否继续播放？"
@@ -103,7 +103,7 @@
             android:id="@+id/btn_button"
             android:layout_width="66dp"
             android:layout_height="26dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_corner_control"
             android:text="继续播放"
             android:textColor="#ffffff"
