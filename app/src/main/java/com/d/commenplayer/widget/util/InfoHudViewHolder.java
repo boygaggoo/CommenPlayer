@@ -1,4 +1,4 @@
-package com.d.commenplayer.widget.media;
+package com.d.commenplayer.widget.util;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,7 +6,6 @@ import android.os.Message;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TableLayout;
-
 
 import com.d.commenplayer.R;
 
@@ -16,33 +15,22 @@ import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import tv.danmaku.ijk.media.player.MediaPlayerProxy;
 
+/**
+ * 统计信息
+ */
 public class InfoHudViewHolder {
-    private TableLayoutBinder mTableLayoutBinder;
     private SparseArray<View> mRowMap = new SparseArray<View>();
     private IMediaPlayer mMediaPlayer;
     private long mLoadCost = 0;
     private long mSeekCost = 0;
 
     public InfoHudViewHolder(Context context, TableLayout tableLayout) {
-        mTableLayoutBinder = new TableLayoutBinder(context, tableLayout);
-    }
-
-    private void appendSection(int nameId) {
-        mTableLayoutBinder.appendSection(nameId);
-    }
-
-    private void appendRow(int nameId) {
-        View rowView = mTableLayoutBinder.appendRow2(nameId, null);
-        mRowMap.put(nameId, rowView);
     }
 
     private void setRowValue(int id, String value) {
         View rowView = mRowMap.get(id);
         if (rowView == null) {
-            rowView = mTableLayoutBinder.appendRow2(id, value);
             mRowMap.put(id, rowView);
-        } else {
-            mTableLayoutBinder.setValueText(rowView, value);
         }
     }
 

@@ -23,6 +23,7 @@ import android.view.View;
 
 
 import com.d.commenplayer.R;
+import com.d.commenplayer.widget.listener.IRenderView;
 
 import java.lang.ref.WeakReference;
 

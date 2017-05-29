@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.d.commenplayer.widget.media;
+package com.d.commenplayer.widget.util;
 
 import java.io.File;
 import java.io.IOException;

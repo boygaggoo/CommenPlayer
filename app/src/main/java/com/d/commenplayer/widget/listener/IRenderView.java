@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.d.commenplayer.widget.media;
+package com.d.commenplayer.widget.listener;
 
 import android.graphics.SurfaceTexture;
 import android.support.annotation.NonNull;
