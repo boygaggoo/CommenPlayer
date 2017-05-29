@@ -11,13 +11,13 @@ public interface IPlayerListener {
      * Register a callback to be invoked when the end of a media file
      * has been reached during playback.
      */
-    void onCompletion(IMediaPlayer var1);
+    void onCompletion(IMediaPlayer mp);
 
     /**
      * Register a callback to be invoked when the media file
      * is loaded and ready to go.
      */
-    void onPrepared(IMediaPlayer var1);
+    void onPrepared(IMediaPlayer mp);
 
     /**
      * Register a callback to be invoked when an error occurs
@@ -25,11 +25,13 @@ public interface IPlayerListener {
      * or if the listener returned false, VideoView will inform
      * the user of any errors.
      */
-    boolean onError(IMediaPlayer var1, int var2, int var3);
+    boolean onError(IMediaPlayer mp, int what, int extra);
 
     /**
      * Register a callback to be invoked when an informational event
      * occurs during playback or setup.
      */
-    boolean onInfo(IMediaPlayer var1, int var2, int var3);
+    boolean onInfo(IMediaPlayer mp, int what, int extra);
+
+    void onVideoSizeChanged(IMediaPlayer mp, int width, int height, int sarNum, int sarDen);
 }

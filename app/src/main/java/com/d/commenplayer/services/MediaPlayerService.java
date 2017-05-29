@@ -23,11 +23,11 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import com.d.commenplayer.media.MediaManager;
 
 
 public class MediaPlayerService extends Service {
-    private static IMediaPlayer sMediaPlayer;
+    private static MediaManager mManager;
 
     public static void intentToStart(Context context) {
         context.startService(newIntent(context));
@@ -47,17 +47,24 @@ public class MediaPlayerService extends Service {
         return null;
     }
 
-    public static void setMediaPlayer(IMediaPlayer mp) {
-        if (sMediaPlayer != null && sMediaPlayer != mp) {
-            if (sMediaPlayer.isPlaying())
-                sMediaPlayer.stop();
-            sMediaPlayer.release();
-            sMediaPlayer = null;
-        }
-        sMediaPlayer = mp;
+    @Override
+    public void onCreate() {
+        super.onCreate();
     }
 
-    public static IMediaPlayer getMediaPlayer() {
-        return sMediaPlayer;
+    @Override
+    public void onDestroy() {
+        mManager.release(true);
+        mManager = null;
+        super.onDestroy();
+    }
+
+    public static MediaManager getMediaManager(Context context) {
+        if (mManager == null) {
+            synchronized (MediaPlayerService.class) {
+                mManager = MediaManager.instance(context);
+            }
+        }
+        return mManager;
     }
 }
