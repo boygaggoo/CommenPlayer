@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 
             }
         });
-        player.play(url1);
+        player.play("rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov");
     }
 
     @Override
