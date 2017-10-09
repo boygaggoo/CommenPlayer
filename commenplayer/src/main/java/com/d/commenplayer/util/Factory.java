@@ -10,6 +10,7 @@ import com.d.commenplayer.media.TextureRenderView;
 
 import java.util.Locale;
 
+import tv.danmaku.ijk.media.exo.IjkExoMediaPlayer;
 import tv.danmaku.ijk.media.player.AndroidMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -61,11 +62,11 @@ public class Factory {
         Settings mSettings = new Settings(context.getApplicationContext());
 
         switch (playerType) {
-//            case Settings.PV_PLAYER__IjkExoMediaPlayer: {
-//                IjkExoMediaPlayer IjkExoMediaPlayer = new IjkExoMediaPlayer(context.getApplicationContext());
-//                mediaPlayer = IjkExoMediaPlayer;
-//            }
-//            break;
+            case Settings.PV_PLAYER__IjkExoMediaPlayer: {
+                IjkExoMediaPlayer IjkExoMediaPlayer = new IjkExoMediaPlayer(context.getApplicationContext());
+                mediaPlayer = IjkExoMediaPlayer;
+            }
+            break;
             case Settings.PV_PLAYER__AndroidMediaPlayer: {
                 AndroidMediaPlayer androidMediaPlayer = new AndroidMediaPlayer();
                 mediaPlayer = androidMediaPlayer;
@@ -74,7 +75,7 @@ public class Factory {
             case Settings.PV_PLAYER__IjkMediaPlayer:
             default: {
                 IjkMediaPlayer ijkMediaPlayer = new IjkMediaPlayer();
-//                ijkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEBUG);
+                ijkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEBUG);
                 ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "reconnect", 1);
                 if (mSettings.getUsingMediaCodec()) {
                     ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 1);
@@ -105,7 +106,7 @@ public class Factory {
                     ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "overlay-format", pixelFormat);
                 }
                 ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 1);
-                ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "start-on-prepared", 0);
+                ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "start-on-prepared", 1);
                 //设置rtsp的连接模式为：tcp/udp
 //                ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "rtsp_transport", "tcp");
 
