@@ -26,11 +26,10 @@ import com.d.lib.xrv.adapter.CommonHolder;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.videolan.libvlc.MediaPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 
 public class ListActivity extends Activity {
     private Context context;
@@ -74,12 +73,12 @@ public class ListActivity extends Activity {
             }
 
             @Override
-            public void onCompletion(IMediaPlayer mp) {
+            public void onCompletion(MediaPlayer mp) {
                 player.getControl().setState(ControlLayout.STATE_COMPLETION);
             }
 
             @Override
-            public void onPrepared(IMediaPlayer mp) {
+            public void onPrepared(MediaPlayer mp) {
                 if (!ignoreNet && NetConstans.NET_STATUS == NetConstans.CONNECTED_MOBILE) {
                     player.pause();
                     player.getControl().setState(ControlLayout.STATE_MOBILE_NET);
@@ -89,18 +88,18 @@ public class ListActivity extends Activity {
             }
 
             @Override
-            public boolean onError(IMediaPlayer mp, int what, int extra) {
+            public boolean onError(MediaPlayer mp, int what, int extra) {
                 player.getControl().setState(ControlLayout.STATE_ERROR);
                 return false;
             }
 
             @Override
-            public boolean onInfo(IMediaPlayer mp, int what, int extra) {
+            public boolean onInfo(MediaPlayer mp, int what, int extra) {
                 return false;
             }
 
             @Override
-            public void onVideoSizeChanged(IMediaPlayer mp, int width, int height, int sarNum, int sarDen) {
+            public void onVideoSizeChanged(MediaPlayer mp, int width, int height, int sarNum, int sarDen) {
 
             }
         });

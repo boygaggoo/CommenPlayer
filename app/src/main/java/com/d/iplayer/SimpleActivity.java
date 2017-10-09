@@ -19,15 +19,14 @@ import com.d.iplayer.net.NetEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import org.videolan.libvlc.MediaPlayer;
 
 public class SimpleActivity extends Activity {
     private String url1 = "http://vpls.cdn.videojj.com/scene/video02_720p.mp4";
     private String url2 = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
     private String url3 = "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4";
     private CommenPlayer player;
-    private boolean ignoreNet;
+    private boolean ignoreNet = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +61,12 @@ public class SimpleActivity extends Activity {
             }
 
             @Override
-            public void onCompletion(IMediaPlayer mp) {
+            public void onCompletion(MediaPlayer mp) {
                 player.getControl().setState(ControlLayout.STATE_COMPLETION);
             }
 
             @Override
-            public void onPrepared(IMediaPlayer mp) {
+            public void onPrepared(MediaPlayer mp) {
                 if (!ignoreNet && NetConstans.NET_STATUS == NetConstans.CONNECTED_MOBILE) {
                     player.pause();
                     player.getControl().setState(ControlLayout.STATE_MOBILE_NET);
@@ -77,18 +76,18 @@ public class SimpleActivity extends Activity {
             }
 
             @Override
-            public boolean onError(IMediaPlayer mp, int what, int extra) {
+            public boolean onError(MediaPlayer mp, int what, int extra) {
                 player.getControl().setState(ControlLayout.STATE_ERROR);
                 return false;
             }
 
             @Override
-            public boolean onInfo(IMediaPlayer mp, int what, int extra) {
+            public boolean onInfo(MediaPlayer mp, int what, int extra) {
                 return false;
             }
 
             @Override
-            public void onVideoSizeChanged(IMediaPlayer mp, int width, int height, int sarNum, int sarDen) {
+            public void onVideoSizeChanged(MediaPlayer mp, int width, int height, int sarNum, int sarDen) {
 
             }
         });

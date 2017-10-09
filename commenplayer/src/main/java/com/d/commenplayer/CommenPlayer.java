@@ -18,8 +18,8 @@ import com.d.commenplayer.listener.IPlayerListener;
 import com.d.commenplayer.listener.IRenderView;
 import com.d.commenplayer.listener.OnAnimatorUpdateListener;
 import com.d.commenplayer.listener.OnNetListener;
-import com.d.commenplayer.media.IjkVideoView;
 import com.d.commenplayer.media.TextureRenderView;
+import com.d.commenplayer.media.VlcVideoView;
 import com.d.commenplayer.ui.ControlLayout;
 import com.d.commenplayer.ui.TouchLayout;
 import com.d.commenplayer.util.MUtil;
@@ -32,7 +32,7 @@ import java.lang.ref.WeakReference;
  */
 public class CommenPlayer extends FrameLayout implements IMediaPlayerControl {
     private Activity activity;
-    private IjkVideoView player;
+    private VlcVideoView player;
     private TouchLayout touchLayout;
     private ControlLayout control;
 
@@ -102,7 +102,7 @@ public class CommenPlayer extends FrameLayout implements IMediaPlayerControl {
     }
 
     protected void initView(View root) {
-        player = (IjkVideoView) root.findViewById(R.id.ijkplayer);
+        player = (VlcVideoView) root.findViewById(R.id.vlcplayer);
         touchLayout = (TouchLayout) root.findViewById(R.id.tl_touch);
         control = (ControlLayout) root.findViewById(R.id.cl_control);
         touchLayout.setIMediaPlayerControl(this);
